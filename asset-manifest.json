@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/cumulus/static/css/main.57aca266.css",
-    "main.js": "/cumulus/static/js/main.9e87b8dd.js",
+    "main.js": "/cumulus/static/js/main.0af1a744.js",
     "static/js/787.139580b0.chunk.js": "/cumulus/static/js/787.139580b0.chunk.js",
     "index.html": "/cumulus/index.html",
     "main.57aca266.css.map": "/cumulus/static/css/main.57aca266.css.map",
-    "main.9e87b8dd.js.map": "/cumulus/static/js/main.9e87b8dd.js.map",
+    "main.0af1a744.js.map": "/cumulus/static/js/main.0af1a744.js.map",
     "787.139580b0.chunk.js.map": "/cumulus/static/js/787.139580b0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.57aca266.css",
-    "static/js/main.9e87b8dd.js"
+    "static/js/main.0af1a744.js"
   ]
 }
