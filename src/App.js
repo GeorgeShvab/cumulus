@@ -42,17 +42,20 @@ const months = {
 };
 
 const backgrounds = {
-  rain: "https://georgeshvab.github.io/cumulus/images/background_rain_1.jpg",
-  drizzle: "https://georgeshvab.github.io/cumulus/images/background_rain_1.jpg",
-  snow: "https://georgeshvab.github.io/cumulus/images/background_snow_1.jpg",
-  fog: "https://georgeshvab.github.io/cumulus/images/background_fog_1.jpg",
-  haze: "https://georgeshvab.github.io/cumulus/images/background_fog_1.jpg",
-  mist: "https://georgeshvab.github.io/cumulus/images/background_fog_1.jpg",
-  sunny: "https://georgeshvab.github.io/cumulus/images/background_sunny_1.jpg",
-  clear: "https://georgeshvab.github.io/cumulus/images/background_sunny_1.jpg",
-  thunderstorm: "https://georgeshvab.github.io/cumulus/images/background_thunderstorm_1.jpg",
-  clouds: "https://georgeshvab.github.io/cumulus/images/background_clouds_1.jpg",
-  initial: "https://georgeshvab.github.io/cumulus/images/background_initial.jpg",
+  rain: "/images/background_rain_1.jpg",
+  drizzle: "/images/background_rain_1.jpg",
+  snow: "/images/background_snow_1.jpg",
+  fog: "/images/background_fog_1.jpg",
+  haze: "/images/background_fog_1.jpg",
+  mist: "/images/background_fog_1.jpg",
+  sunny: "/images/background_sunny_1.jpg",
+  clear: "/images/background_sunny_1.jpg",
+  thunderstorm:
+    "/images/background_thunderstorm_1.jpg",
+  clouds:
+    "/images/background_clouds_1.jpg",
+  initial:
+    "/images/background_initial.jpg",
 };
 
 let data;
@@ -60,7 +63,11 @@ let data;
 function App() {
   const searchValue = useSelector(({ location }) => location.place);
 
-  const [conditions, setConditions] = React.useState(reactLocalStorage.get("lastConditions") ? reactLocalStorage.get("lastConditions") : "initial");
+  const [conditions, setConditions] = React.useState(
+    reactLocalStorage.get("lastConditions")
+      ? reactLocalStorage.get("lastConditions")
+      : "initial"
+  );
 
   const dispatch = useDispatch();
 
@@ -149,7 +156,6 @@ function App() {
     },
   ];
 
-
   const setOvercast = (overcast, location) => {
     return [
       {
@@ -195,13 +201,18 @@ function App() {
           };
           dispatch(setSityError(false));
           dispatch(setTransition(true));
-          setTimeout(() => {dispatch(setTransition(false))}, 1000);
+          setTimeout(() => {
+            dispatch(setTransition(false));
+          }, 1000);
           setTimeout(() => {
             dispatch(setCurrentWeatherData(data.currentWeather));
             dispatch(setOvercastWeatherData(data.overcast));
           }, 500);
           setConditions(data.currentWeather.weather[0].main.toLowerCase());
-          reactLocalStorage.set("lastConditions", data.currentWeather.weather[0].main.toLowerCase());
+          reactLocalStorage.set(
+            "lastConditions",
+            data.currentWeather.weather[0].main.toLowerCase()
+          );
         });
       } catch (error) {
         dispatch(setSityError(true));

@@ -7,7 +7,7 @@ const overcastWeatherData = (state = initialState, action) => {
     case "SET_OVERCAST_WEATHER_DATA":
       const data = action.payload;
       return data;
-    default: 
+    default:
       return state;
   }
 };

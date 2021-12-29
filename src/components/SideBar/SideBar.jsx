@@ -61,17 +61,15 @@ const SideBar = React.memo(function SideBar() {
 		({ currentWeatherData }) => currentWeatherData.data
 	);
 
-	const transition = useSelector(
-		({ transition }) => transition
-	);
+	const transition = useSelector(({ transition }) => transition);
 
-	const sityError = useSelector(
-		({ sityError }) => sityError
-	);
+	const sityError = useSelector(({ sityError }) => sityError);
 
 	const submit = (event) => {
 		event.preventDefault();
-		dispatch(setLocation(event.target.elements.location.value.toLowerCase()));
+		dispatch(
+			setLocation(event.target.elements.location.value.toLowerCase())
+		);
 	};
 
 	const oldValueClick = (loc) => {
@@ -108,81 +106,136 @@ const SideBar = React.memo(function SideBar() {
 
 	return (
 		<aside className="sidebar">
-				<>
-					<div className="sidebar__item">
-						<form onSubmit={submit} action="">
-							<div className={`sidebar__form-error ${!sityError && "transition_active"}`}>Місто не знайдено</div>
-							<input
-								className="sidebar__search"
-								placeholder="Місто"
-								name="location"
-								type="text"
-								autoComplete="off"
-							/>
-						</form>
-						<span className="sidebar__item-line"></span>
-						<div className="sidebar__values">
-							{searchs && searchs.length
-								? searchs.slice(0, 4).map((item, index) => (
-										<div key={index} className="sidebar__value-container">
-											<span
-												onClick={() => oldValueClick(item)}
-												className="sidebar__value"
-											>
-												{item}
-											</span>
-										</div>
-								  ))
-								: ""}
+			<>
+				<div className="sidebar__item">
+					<form onSubmit={submit} action="">
+						<div
+							className={`sidebar__form-error ${
+								!sityError && "transition_active"
+							}`}
+						>
+							Місто не знайдено
+						</div>
+						<input
+							className="sidebar__search"
+							placeholder="Місто"
+							name="location"
+							type="text"
+							autoComplete="off"
+						/>
+					</form>
+					<span className="sidebar__item-line"></span>
+					<div className="sidebar__values">
+						{searchs && searchs.length
+							? searchs.slice(0, 4).map((item, index) => (
+									<div
+										key={index}
+										className="sidebar__value-container"
+									>
+										<span
+											onClick={() => oldValueClick(item)}
+											className="sidebar__value"
+										>
+											{item}
+										</span>
+									</div>
+							  ))
+							: ""}
+					</div>
+				</div>
+				<div className="sidebar__item">
+					<h3 className="sidebar__title">Деталі</h3>
+					<span className="sidebar__item-line"></span>
+					<div className="sidebar__values">
+						<div className="sidebar__value-container">
+							<span className="sidebar__value">Хмарність</span>
+							<span
+								className={`sidebar__value ${
+									transition ? "transition_active" : ""
+								}`}
+							>
+								{currentWeather.clouds
+									? `${currentWeather.clouds.all} %`
+									: ""}
+							</span>
+						</div>
+						<div className="sidebar__value-container">
+							<span className="sidebar__value">Вологість</span>
+							<span
+								className={`sidebar__value ${
+									transition ? "transition_active" : ""
+								}`}
+							>
+								{currentWeather.clouds
+									? `${currentWeather.main.humidity} %`
+									: ""}
+							</span>
+						</div>
+						<div className="sidebar__value-container">
+							<span className="sidebar__value">
+								Швидкість вітру
+							</span>
+							<span
+								className={`sidebar__value ${
+									transition ? "transition_active" : ""
+								}`}
+							>
+								{currentWeather.clouds
+									? `${currentWeather.wind.speed} м/с`
+									: ""}
+							</span>
+						</div>
+						<div className="sidebar__value-container">
+							<span className="sidebar__value">
+								Напрямок вітру
+							</span>
+							<span
+								className={`sidebar__value ${
+									transition ? "transition_active" : ""
+								}`}
+							>
+								{currentWeather.clouds
+									? `${setDeg(currentWeather.wind.deg)}`
+									: ""}
+							</span>
+						</div>
+						<div className="sidebar__value-container">
+							<span className="sidebar__value">Тиск</span>
+							<span
+								className={`sidebar__value ${
+									transition ? "transition_active" : ""
+								}`}
+							>
+								{currentWeather.clouds
+									? `${currentWeather.main.pressure} мм. рт. ст.`
+									: ""}
+							</span>
 						</div>
 					</div>
-					<div className="sidebar__item">
-						<h3 className="sidebar__title">Деталі</h3>
-						<span className="sidebar__item-line"></span>
-						<div className="sidebar__values">
-							<div className="sidebar__value-container">
-								<span className="sidebar__value">Хмарність</span>
-								<span className={`sidebar__value ${transition ? "transition_active" : ""}`}>{currentWeather.clouds ? `${currentWeather.clouds.all} %` : ""}</span>
-							</div>
-							<div className="sidebar__value-container">
-								<span className="sidebar__value">Вологість</span>
-								<span className={`sidebar__value ${transition ? "transition_active" : ""}`}>{currentWeather.clouds ? `${currentWeather.main.humidity} %` : ""}</span>
-							</div>
-							<div className="sidebar__value-container">
-								<span className="sidebar__value">Швидкість вітру</span>
-								<span className={`sidebar__value ${transition ? "transition_active" : ""}`}>{currentWeather.clouds ? `${currentWeather.wind.speed} м/с` : ""}</span>
-							</div>
-							<div className="sidebar__value-container">
-								<span className="sidebar__value">Напрямок вітру</span>
-								<span className={`sidebar__value ${transition ? "transition_active" : ""}`}>{currentWeather.clouds ? `${setDeg(
-									currentWeather.wind.deg
-								)}` : ""}</span>
-							</div>
-							<div className="sidebar__value-container">
-								<span className="sidebar__value">Тиск</span>
-								<span className={`sidebar__value ${transition ? "transition_active" : ""}`}>{currentWeather.clouds ? `${currentWeather.main.pressure} мм. рт. ст.` : ""}</span>
-							</div>
-						</div>
+				</div>
+				<div className="sidebar__item">
+					<h3 className="sidebar__title">Прогноз</h3>
+					<span className="sidebar__item-line"></span>
+					<div
+						className={`overcast__container ${
+							transition ? "transition_active" : ""
+						}`}
+					>
+						{overcast && overcast.length
+							? overcast.map((item, index) => (
+									<OvercastCard
+										key={index}
+										temp={Math.round(item.main.temp)}
+										conditions={item.weather[0].main}
+										date={`${item.dayOfWeek}, ${item.date} ${item.month}`}
+									/>
+							  ))
+							: ""}
 					</div>
-					<div className="sidebar__item">
-						<h3 className="sidebar__title">Прогноз</h3>
-						<span className="sidebar__item-line"></span>
-						<div className={`overcast__container ${transition ? "transition_active" : ""}`}>
-							{overcast && overcast.length
-								? overcast.map((item, index) => (
-										<OvercastCard
-											key={index}
-											temp={Math.round(item.main.temp)}
-											conditions={item.weather[0].main}
-											date={`${item.dayOfWeek}, ${item.date} ${item.month}`}
-										/>
-								  ))
-								: ""}
-						</div>
-					</div>
-				</>
+				</div>
+			</>
 		</aside>
 	);
-})
+});
 
 export default SideBar;

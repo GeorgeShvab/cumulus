@@ -7,7 +7,7 @@ const currentWeatherData = (state = initialState, action) => {
     case "SET_CURRENT_WEATHER_DATA":
       const data = action.payload;
       return data;
-    default: 
+    default:
       return state;
   }
 };

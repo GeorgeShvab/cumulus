@@ -5,7 +5,7 @@ const sityError = (state = initialState, action) => {
     case "SET_SITYERROR":
       const error = action.payload;
       return error;
-    default: 
+    default:
       return state;
   }
 };

@@ -1,11 +1,13 @@
 import React from "react";
 import { reactLocalStorage } from "reactjs-localstorage";
 
-const initLoc = reactLocalStorage.getObject("searchs") ? 
- (reactLocalStorage.getObject("searchs").length ? 
-  (typeof(reactLocalStorage.getObject("searchs")[0]) === "string") ? reactLocalStorage.getObject("searchs")[0] : "Лугини"
-  : "Лугини")
- : "Лугини";
+const initLoc = reactLocalStorage.getObject("searchs")
+  ? reactLocalStorage.getObject("searchs").length
+    ? typeof reactLocalStorage.getObject("searchs")[0] === "string"
+      ? reactLocalStorage.getObject("searchs")[0]
+      : "Лугини"
+    : "Лугини"
+  : "Лугини";
 
 const initialState = {
   place: initLoc,

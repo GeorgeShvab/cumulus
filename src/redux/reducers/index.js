@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
 import location from "./location.js";
 import currentWeatherData from "./currentWeatherData.js";
@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
   currentWeatherData,
   overcastWeatherData,
   transition,
-  sityError
+  sityError,
 });
 
 export default rootReducer;

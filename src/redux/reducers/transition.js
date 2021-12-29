@@ -5,7 +5,7 @@ const transition = (state = initialState, action) => {
     case "SET_TRANSITION":
       const tr = action.payload;
       return tr;
-    default: 
+    default:
       return state;
   }
 };
