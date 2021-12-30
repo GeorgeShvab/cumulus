@@ -23,6 +23,9 @@ body {
 	transition: 2s background-image;
 	@media screen and (max-width: $medium) {
 		height: auto;
+		background-repeat: repeat;
+		background-position: top;
+		background-size: 1000px 700px;
 	}
 }
 

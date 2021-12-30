@@ -1,21 +1,21 @@
 import React from "react";
 import style from "./style.scss";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const iconsUrls = {
-	clouds: "/icons/clouds_icon.svg",
+	clouds: "/cumulus/icons/clouds_icon.svg",
 	cloudsAndSun:
-		"/icons/cloud_sun_icon.svg",
-	rain: "/icons/rain_icon.svg",
-	sunny: "/icons/sun_icon.svg",
-	clear: "/icons/sun_icon.svg",
+		"/cumulus/icons/cloud_sun_icon.svg",
+	rain: "/cumulus/icons/rain_icon.svg",
+	sunny: "/cumulus/icons/sun_icon.svg",
+	clear: "/cumulus/icons/sun_icon.svg",
 	thunderstorm:
-		"/icons/thunderstorm_icon.svg",
-	fog: "/icons/fog_icon.svg",
-	haze: "/icons/fog_icon.svg",
-	mist: "/icons/fog_icon.svg",
-	snow: "/icons/snow_icon.svg",
+		"/cumulus/icons/thunderstorm_icon.svg",
+	fog: "/cumulus/icons/fog_icon.svg",
+	haze: "/cumulus/icons/fog_icon.svg",
+	mist: "/cumulus/icons/fog_icon.svg",
+	snow: "/cumulus/icons/snow_icon.svg",
 };
 
 const translatedConditions = {

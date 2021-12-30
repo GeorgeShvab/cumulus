@@ -10,7 +10,7 @@ import { reactLocalStorage } from "reactjs-localstorage";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { MainInfo, SideBar, Alert } from "./components";
+import { MainInfo, SideBar } from "./components";
 
 import { setCurrentWeatherData } from "./redux/actions/setCurrentWeatherData.js";
 import { setOvercastWeatherData } from "./redux/actions/setOvercastWeatherData.js";
@@ -42,20 +42,20 @@ const months = {
 };
 
 const backgrounds = {
-  rain: "/images/background_rain_1.jpg",
-  drizzle: "/images/background_rain_1.jpg",
-  snow: "/images/background_snow_1.jpg",
-  fog: "/images/background_fog_1.jpg",
-  haze: "/images/background_fog_1.jpg",
-  mist: "/images/background_fog_1.jpg",
-  sunny: "/images/background_sunny_1.jpg",
-  clear: "/images/background_sunny_1.jpg",
+  rain: "/cumulus/images/background_rain_1.jpg",
+  drizzle: "/cumulus/images/background_rain_1.jpg",
+  snow: "/cumulus/images/background_snow_1.jpg",
+  fog: "/cumulus/images/background_fog_1.jpg",
+  haze: "/cumulus/images/background_fog_1.jpg",
+  mist: "/cumulus/images/background_fog_1.jpg",
+  sunny: "/cumulus/images/background_sunny_1.jpg",
+  clear: "/cumulus/images/background_sunny_1.jpg",
   thunderstorm:
-    "/images/background_thunderstorm_1.jpg",
+    "/cumulus/images/background_thunderstorm_1.jpg",
   clouds:
-    "/images/background_clouds_1.jpg",
+    "/cumulus/images/background_clouds_1.jpg",
   initial:
-    "/images/background_initial.jpg",
+    "/cumulus/images/background_initial.jpg",
 };
 
 let data;
@@ -185,7 +185,7 @@ function App() {
             overcast: setOvercast(
               (
                 await fetchWeather(
-                  `http://api.openweathermap.org/data/2.5/forecast?q=${translatedLocation}&appid=c1e2a2b668f3b1b6a8c6c3a71d33f44f&units=metric&lang=ua`
+                  `https://api.openweathermap.org/data/2.5/forecast?q=${translatedLocation}&appid=c1e2a2b668f3b1b6a8c6c3a71d33f44f&units=metric&lang=ua`
                 )
               ).data.list
             ),

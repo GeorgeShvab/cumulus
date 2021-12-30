@@ -96,7 +96,7 @@ const SideBar = React.memo(function SideBar() {
 			searchsValues[0] !== currentWeather.location
 		) {
 			const newArr = searchsValues.filter(
-				(item) => item !== currentWeather.location
+				(item) => item.toLowerCase() !== currentWeather.location.toLowerCase()
 			);
 			newArr.unshift(currentWeather.location);
 			setSearchs(newArr);

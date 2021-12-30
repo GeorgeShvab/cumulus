@@ -5,6 +5,9 @@
 	justify-content: space-between;
 	flex-direction: column;
 	height: 100%;
+	@media screen and (max-width: $medium) {
+		min-height: 375.2px;
+	}
 }
 
 .header__logo-main {
@@ -103,6 +106,8 @@
 	}
 	@media screen and (max-width: $small) {
 		text-align: center;
+		margin-bottom: 30px;
+		font-size: 35px;
 	}
 }
 
